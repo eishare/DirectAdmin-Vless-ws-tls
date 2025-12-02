@@ -1,17 +1,27 @@
-// ===== VLESS-WS-TLS 8节点 2025终极无敌版（无需再改）=====
+// ===== VLESS-WS-TLS 多节点（代码+面板双重变量添加）=====
 const http = require('http');
 const net  = require('net');
 const { WebSocket, createWebSocketStream } = require('ws');
 
-// ================== 全部从面板环境变量读取 ==================
-const UUID   = process.env.UUID?.trim();
-const PORT   = process.env.PORT?.trim();
-const DOMAIN = process.env.DOMAIN?.trim();
+// ================== 双重变量（同时在代码+面板添加）==================
+const UUID   = (process.env.UUID   || "00000000-0000-0000-0000-000000000000").trim();
+const PORT   = (process.env.PORT   || "3000").trim();
+const DOMAIN = (process.env.DOMAIN || "your-domain.example.com").trim();
 
-if (!UUID || !PORT || !DOMAIN) {
-  console.error("\n【致命错误】缺少 UUID / PORT / DOMAIN 三个环境变量！");
-  console.error("请在面板 Environment variables 补全后重启\n");
-  process.exit(1);
+// 关键验证：如果面板没填变量，就直接自杀，绝不让它启动后全 -1
+if (
+  !UUID   || UUID === "00000000-0000-0000-0000-000000000000" ||
+  !PORT   || PORT === "3000" ||
+  !DOMAIN || DOMAIN === "your-domain.example.com"
+) {
+  console.error("\n╔════════════════════════════════════════════╗");
+  console.error("║        严重错误：缺少关键环境变量！        ║");
+  console.error("║ 请在面板「Environment variables」里填：    ║");
+  console.error("║ UUID   = 你的UUID（随便填一个有效的）      ║");
+  console.error("║ PORT   = 3000（推荐）或任意空闲端口       ║");
+  console.error("║ DOMAIN = 你的完整域名（比如 abc.com）     ║");
+  console.error("╚════════════════════════════════════════════╝\n");
+  process.exit(1); // 直接退出，return code 1，面板会红框提醒
 }
 
 // 8个优选域名（可自行增删）
