@@ -1,23 +1,20 @@
-// ===== VLESS-WS-TLS 8节点终极版（此代码无需编辑）=====
+// ===== VLESS-WS-TLS 8节点 2025终极无敌版（无需再改）=====
 const http = require('http');
 const net  = require('net');
 const { WebSocket, createWebSocketStream } = require('ws');
 
-// ================== 以下变量在面板手动添加 ==================
-const UUID   = process.env.UUID?.trim();      
-const PORT   = process.env.PORT?.trim();      
-const DOMAIN = process.env.DOMAIN?.trim();    
+// ================== 全部从面板环境变量读取 ==================
+const UUID   = process.env.UUID?.trim();
+const PORT   = process.env.PORT?.trim();
+const DOMAIN = process.env.DOMAIN?.trim();
 
-// 如果有任意一个没填，立即报错退出，防止启动后全是-1还找不到原因
 if (!UUID || !PORT || !DOMAIN) {
-  console.error("\n【严重错误】环境变量缺失！请在面板 Environment variables 里添加以下三行：");
-  console.error("UUID   = 你的uuid（带不带-都行）");
-  console.error("PORT   = 设定的端口号   （纯数字，和域名指向端口一致）");
-  console.error("DOMAIN = 托管到CF的域名  （包含前缀）\n");
-  process.exit(1);   // 直接退出，returncode 1
+  console.error("\n【致命错误】缺少 UUID / PORT / DOMAIN 三个环境变量！");
+  console.error("请在面板 Environment variables 补全后重启\n");
+  process.exit(1);
 }
 
-// 7个优选域名（可自行增删）
+// 8个优选域名（可自行增删）
 const BEST_DOMAINS = [
   "www.visa.com.hk",
   "www.visa.com.tw",
@@ -28,28 +25,27 @@ const BEST_DOMAINS = [
   "cu.877774.xyz"
 ];
 
-// 生成单条链接
 function generateLink(address) {
   return `vless://${UUID}@${address}:443?encryption=none&security=tls&sni=${DOMAIN}&fp=chrome&type=ws&host=${DOMAIN}&path=%2F#${DOMAIN}-${address.split('.').join('-')}`;
 }
 
-// HTTP 接口（可选，访问 http://IP:PORT/UUID 也能看到链接）
+// 关键：去掉 charset，面板 Content-Type 
+const HTML_HEADER = { 'Content-Type': 'text/html' };
+const TEXT_HEADER = { 'Content-Type': 'text/plain' };
+
 const server = http.createServer((req, res) => {
-  // 根路径：返回假 HTML 页（让面板健康检查通过）
   if (req.url === '/') {
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.writeHead(200, HTML_HEADER);
     res.end('<html><body><h1>VLESS-WS-TLS Node Running</h1><p>访问 /' + UUID + ' 获取节点链接</p></body></html>');
   }
-  // /UUID 路径：正常返回 8 条链接（text/plain）
   else if (req.url === `/${UUID}`) {
     let txt = "═════ 8 条节点链接 ═════\n\n";
     txt += generateLink(DOMAIN) + "\n\n";
-    BEST_DOMAINS.forEach(d => txt += generateLink(d) + "\n");
-    txt += "\n控制台已完整输出，可直接复制使用";
-    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+    BEST_DOMAINS.forEach(d => txt += generateLink(d) + "\n\n");
+    txt += "控制台已完整输出，可直接复制使用";
+    res.writeHead(200, TEXT_HEADER);
     res.end(txt);
   }
-  // 其他路径 404
   else {
     res.writeHead(404);
     res.end('404 Not Found');
@@ -66,8 +62,8 @@ wss.on('connection', ws => {
     if (!id.every((v, i) => v === parseInt(clean.substr(i * 2, 2), 16))) return;
 
     let i = 17;
-    i += 1 + msg.slice(i, i + 1).readUInt8();   // skip addr
-    i += 2;                                     // skip port
+    i += 1 + msg.slice(i, i + 1).readUInt8();
+    i += 2;
     ws.send(new Uint8Array([version, 0]));
 
     const duplex = createWebSocketStream(ws);
@@ -78,12 +74,12 @@ wss.on('connection', ws => {
   });
 });
 
-// ================== 启动成功后直接在控制台打印全部 8 条链接 ==================
+// ================== 启动成功打印8条链接 ==================
 server.listen(Number(PORT), () => {
   console.log("\n╔══════════════════════════════════════════════════════════════╗");
-  console.log("║                VLESS-WS-TLS 8节点启动成功！                  ║");
-  console.log(`║ 主域名   : ${DOMAIN.padEnd(48)}║`);
-  console.log(`║ 后端端口 : ${PORT.padEnd(48)}║`);
+  console.log("║            VLESS-WS-TLS 8节点启动成功！                      ║");
+  console.log(`║ 主域名   : ${DOMAIN.padEnd(45)}║`);
+  console.log(`║ 后端端口 : ${PORT.padEnd(45)}║`);
   console.log(`║ UUID     : ${UUID}║`);
   console.log("╚══════════════════════════════════════════════════════════════╝\n");
 
@@ -97,5 +93,5 @@ server.listen(Number(PORT), () => {
     console.log("");
   });
 
-  console.log("↑ 上面共 8 条链接已全部输出，直接复制使用即可！\n");
+  console.log("↑ 上面8条链接已全部输出，直接复制使用！\n");
 });
