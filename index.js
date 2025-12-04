@@ -10,13 +10,14 @@ const DOMAIN = (process.env.DOMAIN || "your-domain.example.com").trim(); // 托�
 const NAME   = "easyshare";
 
 const BEST_DOMAINS = [
+  "www.visa.cn",
+  "www.visa.com",
+  "www.wto.org",
+  "shopify.com",
+  "time.is ",
+  "www.noq.hk",
   "www.visa.com.hk",
   "www.visa.com.tw",
-  "www.visa.cn",
-  "cf.877774.xyz",
-  "cmcc.877774.xyz",
-  "ct.877774.xyz",
-  "cu.877774.xyz"
 ];
 
 
@@ -57,9 +58,6 @@ const server = http.createServer((req, res) => {
 
     else if (req.url === `/${UUID}`) {
         let txt = "═════ easyshare VLESS-WS-TLS 节点 ═════\n\n";
-
-        // 主域名节点
-        txt += generateLink(DOMAIN) + "\n\n";
 
         // 优选域名节点
         BEST_DOMAINS.forEach(d => txt += generateLink(d) + "\n\n");
@@ -135,10 +133,7 @@ server.listen(Number(PORT), () => {
     console.log("          VLESS-WS-TLS 已成功启动");
     console.log("===============================================\n");
 
-    console.log("主域名节点：");
-    console.log(generateLink(DOMAIN), "\n");
-
-    console.log("优选域名 8 条：\n");
+    console.log("优选域名：\n");
     BEST_DOMAINS.forEach((d, i) => console.log(`${i + 1}. ${generateLink(d)}\n`));
 
     console.log(`访问：http://<服务器IP>:${PORT}/${UUID}`);
