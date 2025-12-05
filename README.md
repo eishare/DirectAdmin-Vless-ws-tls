@@ -2,6 +2,8 @@
 
 * 适用DirectAdmin面板node.js环境 
    （Webfreecloud，Web.C-Servers等）
+  
+* 随机端口，无需担心端口占用困扰
 
 * 多区域优选域名覆盖，延迟低，网络表现优异！
 
@@ -12,7 +14,7 @@
 * 1：域名托管至Cloudflare，添加一条DNS记录
 
 * 2：index.js+package.json上传至服务器public_html目录
-   修改index.js中的3个变量：UUID/DOMAIN/PORT
+   修改index.js中的2个变量：UUID/DOMAIN
 
 * 3：进入面板：附加功能--Setup Node.js APP
    
