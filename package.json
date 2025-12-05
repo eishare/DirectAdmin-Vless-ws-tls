@@ -1,7 +1,7 @@
 {
   "name": "vless-ws-tls-8links",
   "version": "1.0.0",
-  "description": "纯净 VLESS-WS-TLS + 8条优选域名节点",
+  "description": "纯净 VLESS-WS-TLS + 优选域名节点",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
