@@ -17,7 +17,7 @@ const BEST_DOMAINS = [
   "time.is",
   "www.noq.hk",
   "www.visa.com.hk",
-  "www.visa.com.tw",
+  "udemy.com",
 ];
 
 // ============================================================
