@@ -18,6 +18,7 @@
    
      *输入：
           public_html 和 index.js
+
      *然后：
            CREATE APPLICATION，运行两次
           （如出现异常提示，进入第5条）
