@@ -1,16 +1,26 @@
-### Webfreecloud CDN节点部署+多优选域名方案 说明：
+### Vless+ws+tls 单节点部署+多优选域名方案 说明：
 
-1：单协议Vless ws tls，同时适用web.c-servers这类DirectAdmin面板node.js环境
+** 适用DirectAdmin面板node.js环境 
+   （webfreecloud，Web.C-Servers等）
 
-2：Webfreecloud需先更新托管到CF的域名
+** 添加多区域优选域名，低延迟
+
+-----------------------------------------------------------
+
+### 使用方法：
+
+1：域名托管至Cloudflare，添加一条DNS记录
 
 3：index.js+package.json上传至服务器public_html目录，修改index.js中的UUID/DOMAIN/PORT
 
-4：进入面板：附加功能--Setup Node.js APP，CREATE APPLICATION，运行两次
-
+4：进入面板：附加功能--Setup Node.js APP，
+   
+   输入：
    public_html
    index.js
 
+   然后：CREATE APPLICATION，运行两次
+   
 5：域名/UUID，浏览器访问可见链接地址
 
-6：CREATE APPLICATION出现异常提醒、APP无法删除？后续更新教程视频
+6：CREATE APPLICATION出现异常提醒、APP无法删除？教程视频：
