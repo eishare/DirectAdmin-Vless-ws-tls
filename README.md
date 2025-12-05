@@ -1,7 +1,7 @@
 ### Vless+ws+tls 单节点部署+多优选域名方案 说明：
 
 * 适用DirectAdmin面板node.js环境 
-   （webfreecloud，Web.C-Servers等）
+   （WebFreecloud，Web.C-Servers等）
 
 * 多区域优选域名覆盖，延迟低，网络表现更佳！
 
