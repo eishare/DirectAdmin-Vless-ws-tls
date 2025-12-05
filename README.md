@@ -16,9 +16,9 @@
 
 * 3：进入面板：附加功能--Setup Node.js APP
    
-     输入：
+     *输入：
           public_html 和 index.js
-     然后：
+     *然后：
            CREATE APPLICATION，运行两次
           （如出现异常提示，进入第5条）
    
