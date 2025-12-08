@@ -1,12 +1,9 @@
 {
-  "name": "directadmin-vless-ws-tls",
+  "name": "vless-da",
   "version": "1.0.0",
-  "description": "Lightweight VLESS-WS-TLS Node.js backend for DirectAdmin",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "ws": "^8.18.0"
-  }
+  "type": "commonjs",
+  "scripts": { "start": "node index.js" },
+  "dependencies": { "ws": "8.18.0" },
+  "engines": { "node": ">=20.0.0" }
 }
