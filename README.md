@@ -9,7 +9,7 @@
   
 * 代码添加保活，每2分钟访问一次domain/uuid
 
-* （可选）Cloudflare Workers保活方案：https://github.com/eishare/keep-alive-DirectDdmin-Node.js
+* （非必选）Cloudflare Workers保活方案：https://github.com/eishare/keep-alive-DirectDdmin-Node.js
 -----------------------------------------------------------
 
 ### 使用方法：
