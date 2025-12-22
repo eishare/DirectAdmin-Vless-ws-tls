@@ -25,7 +25,6 @@
           public_html 和 index.js
 
      *然后：
-           CREATE APPLICATION，运行两次
-          （如出现异常提示，进入第5条）
+           CREATE APPLICATION，运行安装npm、运行js
    
 * 4：域名/UUID，浏览器访问可见节点链接地址
