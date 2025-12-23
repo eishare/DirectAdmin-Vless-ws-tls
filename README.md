@@ -2,7 +2,7 @@
 
 * 最新精简通用版本，适用Webfreecloud、WebHostMost、Web.C-Servers的DirectAdmin面板node.js环境 
   
-* 改为系统自行匹配端口，无需考虑端口占用等问题
+* 改为端口自适应，无需考虑端口占用等问题
 
 * 多区域优选域名覆盖，延迟低，网络表现优异
 
