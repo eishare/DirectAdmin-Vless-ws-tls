@@ -23,10 +23,8 @@
           文件：index.js
 
      *然后：
-           CREATE APPLICATION
+  CREATE APPLICATION
+  run npm install
+  运行js--点击start--运行
   
-           run npm install
-  
-           运行js--点击start--运行
-   
 * 4：浏览器访问 域名/UUID，可见节点链接地址
