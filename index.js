@@ -9,9 +9,9 @@ const PORT = 0; // 随机端口
 const BEST_DOMAINS = [
     "www.visa.cn",
     "www.shopify.com",
-    "time.is",
-    "www.wto.org",
     "store.ubi.com",
+    "www.wto.org",
+    "time.is",
     "www.udemy.com",
 ];
 
