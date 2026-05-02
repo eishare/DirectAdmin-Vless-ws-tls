@@ -40,4 +40,4 @@
   
 * 4：浏览器访问 域名/UUID，可见节点链接地址
   
-* 5：报错后无法删除app的详细解决步骤：见视频教程（制作中）
+* 5：报错后无法删除app的详细解决步骤：见视频教程 https://youtu.be/nXbSRIvLQhg?si=3i2G9K2KHnykrIwz
